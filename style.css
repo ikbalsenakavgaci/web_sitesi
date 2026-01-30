@@ -1,0 +1,164 @@
+/* RENK TANIMLAMALARI VE GENEL AYARLAR */
+:root {
+    --ana-bordo: #800000;      /* Kahve Diyarı ana rengi */
+    --kirik-beyaz: #FAF9F6;    /* Sayfa zemin rengi */
+    --vurgu-altin: #C5A059;    /* Altın tonu */
+    --yazi-koyu: #2D2D2D;
+}
+
+body {
+    background-color: var(--kirik-beyaz);
+    color: var(--yazi-koyu);
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* NAVBAR (ÜST MENÜ) */
+.navbar {
+    display: flex;             /* Logoyu ve menüyü yan yana dizmek için */
+    justify-content: space-between; /* Logo en solda linkler en sağda kalsın diye arayı açmak için */
+    align-items: center;       /* Menü elemanlarının dikeyde tam ortada durması için */
+    padding: 15px 8%;
+    background-color: var(--ana-bordo);
+    color: var(--kirik-beyaz);
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;             /* Linkleri yan yana dizmek için */
+    list-style: none;
+    gap: 30px;                 /* linklerin arasına 30 piksel boşluk koymak için */
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--kirik-beyaz);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* HERO (GİRİŞ) BÖLÜMÜ */
+.hero {
+    display: flex;             /* Yazı (Sol) ve Resmi (Sağ) yan yana koymak için  */
+    align-items: center;       /* Yazı ve resmin dikeyde aynı hizada olması için */
+    padding: 80px 10%;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1;                   /* Yazı alanının dengeli yayılması için */
+}
+
+.hero-text h1 {
+    color: var(--ana-bordo);
+    font-size: 3rem;
+}
+
+/* HERO RESİM AYARLARI */
+.hero-img {
+    flex: 1;                   /* Resim alanının ekranın yarısını kaplaması için */
+    display: flex;             /* Resmin kendi içinde hizalanması için */
+    justify-content: center;   /* Resmi yatayda ortalamak için */
+}
+
+.hero-img img {
+    width: 100%;               /* Kabının genişliğine uyum sağlaması için  */
+    max-width: 500px;          /* Ama 500px'den daha büyük olmasın (Çok büyümesini engeller) */
+    height: 400px;             /* Sabit bir yükseklik vermek için */
+    object-fit: cover;         /* Resmi bozmadan alanı doldurmak için */
+    border-radius: 20px;       /* Köşeleri yumuşatır */
+    border: 5px solid white;   /* Çerçeve ekler */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Hafif gölge derinlik katar */
+}
+
+/* PRICING (MENÜ) KARTLARI */
+.pricing-wrapper {
+    display: flex;             /* Fiyat kartlarını yan yana dizmek için */
+    justify-content: center;   /* Kartların sayfanın tam ortasında durması için */
+    gap: 25px;                 /* Kartların arasına mesafe koymak için */
+    flex-wrap: wrap;           /* Ekran daralınca sığmayan kartın alta düşmesi için */
+    padding: 50px 20px;
+}
+
+.card {
+    background: white;
+    border: 2px solid var(--ana-bordo);
+    border-radius: 15px;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+}
+
+.card.popular {
+    border-color: var(--vurgu-altin); /* En popüler paketi altın rengiyle vurguluyoruz */
+    border-width: 4px;
+    transform: scale(1.05);
+}
+
+.btn-main, .btn {
+    background-color: var(--ana-bordo);
+    color: white;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* MOBİL UYUM (RESPONSIVE ARCHITECT) */
+@media (max-width: 768px) {
+    .navbar, .hero {
+        flex-direction: column; /* Mobilde her şeyi alt alta dizmek için */
+        text-align: center;
+    }
+
+    .hero-img {
+        order: -1;             /* Mobilde resmin yazının üstünde çıkması için  */
+        margin-bottom: 30px;
+    }
+
+    .pricing-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* SERVICES GRID TASARIMI */
+.services {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.services-grid {
+    display: grid;             /* Izgara yapısı oluşturarak kutuları yerleştirmek için */
+    grid-template-columns: repeat(3, 1fr); /* Masaüstünde 3 eşit sütun  */
+    gap: 30px;                 /* Kutular arası boşluk */
+    margin-top: 40px;
+}
+
+.service-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border-bottom: 5px solid var(--ana-bordo);
+    transition: 0.3s;
+}
+
+/* RESPONSIVE (MOBİL VE TABLET) AYARLARI */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablette 2 sütun  */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse; /* Mobilde resim yazının üstüne çıksın */
+        text-align: center;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Mobilde tek sütun */
+    }
+}
