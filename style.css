@@ -161,4 +161,62 @@ body {
     .services-grid {
         grid-template-columns: 1fr; /* Mobilde tek sütun */
     }
+
+}
+/* EKİP SAYFASI TASARIMI */
+.team-container {
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.team-grid {
+    display: flex; /* Kartları yan yana dizmek için flex kullandım */
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Mobilde kartlar alt alta düşsün diye */
+}
+
+/* KART TASARIMI VE ZOOM EFEKTİ */
+.team-card {
+    background: white;
+    border: 2px solid var(--ana-bordo);
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    transition: all 0.4s ease; /* Hareketlerin yumuşak olması için ekledim */ 
+    position: relative;
+    overflow: hidden; /* Sertifika dışarı taşmasın diye */
+}    
+
+.team-card:hover {
+    transform: scale(1.05); /* Mouse gelince kart biraz büyüsün */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Altına gölge ekledim */
+}
+
+.team-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* SERTİFİKA ANİMASYONU */
+.cert-overlay {
+    position: absolute; /* Resmin tam üzerine yapışması için */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 0, 0, 0.9); /* Kendi bordo rengimizden hafif şeffaf arka plan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Normalde görünmesin diye gizledim */
+    transition: opacity 0.5s; /* Yavaşça belirmesi için */
+}
+
+.user-card:hover .cert-overlay {
+    opacity: 1; /* Mouse karta gelince sertifika  çıksın */
+}
+
+.cert-overlay img {
+    width: 80%; /* Sertifika çok kocaman olmasın diye küçülttüm */
 }
