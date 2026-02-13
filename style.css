@@ -73,7 +73,7 @@ body {
 
 /* PRICING (MENÜ) KARTLARI */
 .page-header{
-    text-align: center;       
+    text-align: center;        /* yazıyı ortalar */
 }
 
 
@@ -226,3 +226,4 @@ body {
 .cert-overlay img {
     width: 80%; /* Sertifika çok kocaman olmasın diye küçülttüm */
 }
+
