@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kahve Diyarı | Teklif Hesapla</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">KAHVE DİYARI</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Ana Sayfaya Dön</a></li>
+        </ul>
+    </nav>
+
+    <main class="calculator-page">
+        <div class="calculator-card">
+            <h2>Kendi Teklifinizi Oluşturun</h2>
+            <p>Seçimlerinize göre tahmini tutarı hesaplayalım.</p>
+
+            <div class="input-group">
+                <label for="kahveMiktari">Kahve Miktarı (kg) - (400 TL/kg):</label>
+                <input type="number" id="kahveMiktari" value="1" min="1">
+            </div>
+
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" id="cikolataSec"> El Yapımı Çikolata İstiyorum (+60 TL)
+                </label>
+            </div>
+
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" id="kurabiyeSec"> Taze Kurabiye İstiyorum (+40 TL)
+                </label>
+            </div>
+
+            <button id="btnHesapla" onclick="toplamTutarHesapla()">Hesapla</button>
+
+            <div class="result-box">
+                <h3>Tahmini Tutar: <span id="sonucFiyat">400</span> TL</h3>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // JavaScript ile maliyet hesaplama motoru (Logic)
+        function toplamTutarHesapla() {
+            // Verileri sayfadan alıyoruz (Input Handling)
+            let miktar = document.getElementById('kahveMiktari').value;
+            let cikolataVarMi = document.getElementById('cikolataSec').checked;
+            let kurabiyeVarMi = document.getElementById('kurabiyeSec').checked;
+
+            const birimFiyat = 400; // 1 kg kahve fiyatı
+            const ekCikolata = 60;
+            const ekKurabiye = 40;
+
+            // Hesaplama algoritması
+            let toplam = miktar * birimFiyat;
+
+            if (cikolataVarMi) {
+                toplam += ekCikolata; // Çikolata seçildiyse ekle
+            }
+
+            if (kurabiyeVarMi) {
+                toplam += ekKurabiye; // Kurabiye seçildiyse ekle
+            }
+
+            // Sayfada dinamik olarak göster (DOM Manipülasyonu) 
+            document.getElementById('sonucFiyat').innerText = toplam;
+        }
+    </script>
+</body>
+</html>
