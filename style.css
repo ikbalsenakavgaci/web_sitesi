@@ -72,6 +72,11 @@ body {
 }
 
 /* PRICING (MENÜ) KARTLARI */
+.page-header{
+    text-align: center;       
+}
+
+
 .pricing-wrapper {
     display: flex;             /* Fiyat kartlarını yan yana dizmek için */
     justify-content: center;   /* Kartların sayfanın tam ortasında durması için */
@@ -105,6 +110,7 @@ body {
     margin-top: 20px;
     font-weight: bold;
 }
+
 
 /* MOBİL UYUM (RESPONSIVE ARCHITECT) */
 @media (max-width: 768px) {
@@ -161,8 +167,8 @@ body {
     .services-grid {
         grid-template-columns: 1fr; /* Mobilde tek sütun */
     }
-
 }
+
 /* EKİP SAYFASI TASARIMI */
 .team-container {
     padding: 50px 10%;
@@ -204,7 +210,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 65%;
     background: rgba(128, 0, 0, 0.9); /* Kendi bordo rengimizden hafif şeffaf arka plan */
     display: flex;
     align-items: center;
@@ -213,7 +219,7 @@ body {
     transition: opacity 0.5s; /* Yavaşça belirmesi için */
 }
 
-.user-card:hover .cert-overlay {
+.team-card:hover .cert-overlay {
     opacity: 1; /* Mouse karta gelince sertifika  çıksın */
 }
 
