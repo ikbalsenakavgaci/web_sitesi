@@ -1,16 +1,29 @@
 /* RENK TANIMLAMALARI VE GENEL AYARLAR */
 :root {
     --ana-bordo: #800000;      /* Kahve Diyarı ana rengi */
-    --kirik-beyaz: #FAF9F6;    /* Sayfa zemin rengi */
     --vurgu-altin: #C5A059;    /* Altın tonu */
-    --yazi-koyu: #2D2D2D;
+    --nav-yazi: #FAF9F6;
+    /* değişecek renkler */
+    --zemin-rengi: #FAF9F6;    /* Sayfa zemin rengi- kırık beyaz (aydınlık mod) */
+    --yazi-rengi: #2D2D2D;     /* koyu gri */
+    --kart-zemin: #ffffff;
+    --nav-zemin: var(--ana-bordo);
+}
+
+/* KARANLIK MOD AYARLARI */
+body.dark-mode {
+    --zemin-rengi: #121212;  /* Karanlık mod ana zemin */
+    --yazi-rengi: #FAF9F6;   /* Yazılar karanlık mod */
+    --kart-zemin: #1e1e1e;   /* Kartlar biraz daha açık siyah  */
+    --nav-zemin: #000000;    /* Navbar karanlık modda tam siyah  */
 }
 
 body {
-    background-color: var(--kirik-beyaz);
-    color: var(--yazi-koyu);
+    background-color: var(--zemin-rengi);
+    color: var(--yazi-rengi);
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;  /* Renk geçişi yumuşak olsun diye */
 }
 
 /* NAVBAR (ÜST MENÜ) */
@@ -20,7 +33,7 @@ body {
     align-items: center;       /* Menü elemanlarının dikeyde tam ortada durması için */
     padding: 15px 8%;
     background-color: var(--ana-bordo);
-    color: var(--kirik-beyaz);
+    color: var(--nav-yazi);
     font-weight: bold;
 }
 
@@ -32,7 +45,7 @@ body {
 }
 
 .nav-links a {
-    color: var(--kirik-beyaz);
+    color: var(--nav-yazi);
     text-decoration: none;
     font-weight: bold;
 }
@@ -73,7 +86,7 @@ body {
 
 /* PRICING (MENÜ) KARTLARI */
 .page-header{
-    text-align: center;        /* yazıyı ortalar */
+    text-align: center;       
 }
 
 
@@ -86,7 +99,7 @@ body {
 }
 
 .card {
-    background: white;
+    background: var(--kart-zemin);
     border: 2px solid var(--ana-bordo);
     border-radius: 15px;
     padding: 30px;
@@ -144,7 +157,7 @@ body {
 }
 
 .service-box {
-    background: white;
+    background: var(--kart-zemin);
     padding: 30px;
     border-radius: 15px;
     border-bottom: 5px solid var(--ana-bordo);
@@ -184,7 +197,7 @@ body {
 
 /* KART TASARIMI VE ZOOM EFEKTİ */
 .team-card {
-    background: white;
+    background: var(--kart-zemin);
     border: 2px solid var(--ana-bordo);
     border-radius: 15px;
     padding: 20px;
@@ -256,7 +269,7 @@ body {
 }
 
 .calculator-card {
-    background: white;
+    background: var(--kart-zemin);
     padding: 40px;
     border-radius: 20px;
     border: 2px solid var(--ana-bordo);
@@ -289,3 +302,44 @@ body {
     color: var(--ana-bordo);
 }
 
+/* TOGGLE BUTON TASARIMI */
+.dark-mode-toggle {
+    width: 60px;
+    height: 30px;
+    background-color: var(--zemin-rengi); /* Zemin rengine göre değişsin */
+    border: 2px solid var(--zemin-rengi);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.toggle-ball {
+    width: 22px;
+    height: 22px;
+    background-color: var(--ana-bordo); /* Aydınlık modda topuz Bordo */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+}
+
+/* KARANLIK MODDA BUTONUN DEĞİŞİMİ */
+body.dark-mode .toggle-ball {
+    transform: translateX(28px); /* Topuzu sağa kaydır */
+    background-color: #FAF9F6;   /* Karanlık modda topuz Kırık Beyaz */
+}
+
+body.dark-mode .toggle-icon {
+    color: var(--ana-bordo);     /* Ay ikonu Bordo olsun */
+}
+
+#toggle-icon {
+    font-size: 14px;
+    user-select: none;
+}
